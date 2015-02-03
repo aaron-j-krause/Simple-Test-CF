@@ -4,12 +4,13 @@ var app = require('../lib/greet');
 describe('Greet', function() {
   describe('#greet()', function() {
     it('should get a name from process.argv' , function() {
+      var tempProc = process.argv;
       process.argv = ['node', 'somefile.js', 'Dave'];
       var results = app.greet();
 
       expect(results).to.equal('Hello, Dave I\'m Node.');
 
-      process.argv = {};
+      process.argv = tempProc;
     });
 
     it('should admonish user for an empty input', function() {
