@@ -3,7 +3,14 @@ var app = require('../lib/greet');
 
 describe('Greet', function() {
   describe('#greet()', function() {
-
+    var args;
+    before(function(){
+      args = process.argv;
+      process.argv = ['node','file'];
+    });
+    after(function(){
+      process.argv = args;
+    });
     it('should admonish user for an empty input', function() {
       var results = app.greet();
 
